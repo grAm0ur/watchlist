@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}" type="text/css">
     <title>{{ name }} 's Watchlist</title>
 </head>
 <body>
-<h2>{{ name }} 's Watchlist</h2>
+<h2>
+    <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/avatar.png') }}">
+    {{ name }} 's Watchlist
+</h2>
 <p>{{ movies|length }} Titles</p>
-<ul>
+<ul class="movie-list">
     {% for movie in movies %}
         <li>{{ movie.title }} - {{ movie.year }}</li>
     {% endfor %}
 </ul>
+<img alt="Walking Totoro" class=roroto src="{{ url_for('static', filename='images/totoro.gif') }}">
 <footer>&copy;2023 Gong.C</footer>
 </body>
 </html>
