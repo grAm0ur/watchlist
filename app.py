@@ -39,6 +39,11 @@ class Movie(db.Model):
     year = db.Column(db.String(4))
 
 
+@login_manager.user_loader  # 注册回调函数，用于从会话中加载用户对象
+def load_user(user_id):  # 回调函数的参数就是从会话中读取的用户 ID
+    return User.query.get(int(user_id))
+
+
 @app.cli.command()  # 注册为命令，可以传入 name 参数来自定义命令
 @click.option('--drop', is_flag=True, help='Create after drop.')  # 设置选项
 def initdb(drop):
